@@ -1,13 +1,19 @@
 # Docker-Ansible base image
 
-[![Layers](https://images.microbadger.com/badges/image/pad92/ansible-alpine.svg)](https://microbadger.com/images/pad92/ansible-alpine) [![GitHub issues](https://img.shields.io/github/issues/pad92/docker-ansible-alpine.svg)](https://github.com/pad92/docker-ansible-alpine) [![Docker Automated build](https://img.shields.io/docker/automated/pad92/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/pad92/ansible-alpine/) [![Docker Build Status](https://img.shields.io/docker/build/pad92/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/pad92/ansible-alpine/) [![Docker Pulls](https://img.shields.io/docker/pulls/pad92/ansible-alpine.svg)](https://hub.docker.com/r/pad92/ansible-alpine/)
+(https://img.shields.io/github/issues/pad92/docker-ansible-alpine.svg)](https://github.com/pad92/docker-ansible-alpine) [![Docker Automated build](https://img.shields.io/docker/automated/pad92/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/pad92/ansible-alpine/) [![Docker Build Status](https://img.shields.io/docker/build/pad92/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/pad92/ansible-alpine/) [![Docker Pulls](https://img.shields.io/docker/pulls/pad92/ansible-alpine.svg)](https://hub.docker.com/r/pad92/ansible-alpine/)
+
+## Additional services
+
+- Sed
+- Bash
+- Base64
 
 ## Usage
 
 ### Environnement variable
 
 | Variable             | Default Value    | Usage                                       |
-|----------------------|------------------|---------------------------------------------|
+| -------------------- | ---------------- | ------------------------------------------- |
 | PIP_REQUIREMENTS     | requirements.txt | install python library requirements         |
 | ANSIBLE_REQUIREMENTS | requirements.yml | install ansible galaxy roles requirements   |
 | DEPLOY_KEY           |                  | pass an SSH private key to use in container |
@@ -15,6 +21,7 @@
 ### Mitogen
 
 To enable mitogen, add this configuration into defaults in defaults.cfg file
+
 ```
 action_plugins = ~/.ansible/plugins/action:/usr/share/ansible/plugins/action
 strategy_plugins = /opt/mitogen/ansible_mitogen/plugins/strategy
@@ -45,6 +52,7 @@ docker run -it --rm \
 docker run -it --rm pad92/ansible-alpine:latest \
   -v ${PWD}:/ansible ansible-playbook tests/playbook.yml --syntax-check
 ```
+
 ### Run with forwarding ssh agent
 
 ```

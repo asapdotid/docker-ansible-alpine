@@ -1,9 +1,20 @@
 #!/bin/sh
-# $IMAGE_NAME var is injected into the build so the tag is correct.
+set -o nounset -o pipefail -o errexit
 
-docker build --build-arg VCS_REF=`git rev-parse --short HEAD` \
+# Load all variables .env
+set -o allexport
+source "$(dirname "$0")/.env"
+set +o allexport
+
+# Check first if docker image is exist
+OLD="$(docker ps --all --quiet --filter=name="$DOCKER_REPO/$IMAGE_NAME:$IMAGE_VERSION")"
+if [ -n "$OLD" ]; then
+  exec docker stop $OLD && docker rm $OLD
+fi
+# Run Docker
+exec docker build --build-arg VCS_REF=`git rev-parse --short HEAD` \
              --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
              --build-arg ANSIBLE_VERSION=${ANSIBLE_VERSION} \
              --build-arg ANSIBLE_LINT_VERSION=${ANSIBLE_LINT_VERSION} \
              --build-arg MITOGEN_VERSION=${MITOGEN_VERSION} \
-             -t $IMAGE_NAME .
+             -t $DOCKER_REPO/$IMAGE_NAME:$IMAGE_VERSION .

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -o nounset -o pipefail -o errexit
+
+# Load all variables .env
+set -o allexport
+source "$(dirname "$0")/.env"
+set +o allexport
+
+# Run Docker
+exec docker image push $DOCKER_REPO/${IMAGE_NAME}:${IMAGE_VERSION}

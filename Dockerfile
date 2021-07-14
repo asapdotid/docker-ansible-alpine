@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.14
 
 # Metadata params
 ARG BUILD_DATE
@@ -27,7 +27,10 @@ RUN apk --update --no-cache add \
         py3-pip \
         py3-cryptography \
         rsync \
-        sshpass
+        sshpass \
+        perl-mime-base64 \
+        sed \
+        bash
 
 RUN apk --update add --virtual \
         .build-deps \
