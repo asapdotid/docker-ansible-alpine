@@ -1,6 +1,0 @@
----
-# Install a role from teh Ansible Galaxy (ansible.posix)
-- src: ansible.posix
-
-# Install a role from teh Ansible Galaxy (ansible.posix)
-- src: community.docker
