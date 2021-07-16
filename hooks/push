@@ -1,5 +1,5 @@
 #!/bin/sh
-set -o nounset -o pipefail -o errexit
+set -o nounset -o errexit
 
 # Load all variables .env
 set -o allexport
