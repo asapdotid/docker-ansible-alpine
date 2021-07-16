@@ -1,6 +1,6 @@
 # Docker-Ansible base image
 
-(https://img.shields.io/github/issues/asapdotid/docker-ansible-alpine.svg)](https://github.com/asapdotid/docker-ansible-alpine) [![Docker Automated build](https://img.shields.io/docker/automated/asapdotid/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/asapdotid/ansible-alpine/) [![Docker Build Status](https://img.shields.io/docker/build/asapdotid/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/asapdotid/ansible-alpine/) [![Docker Pulls](https://img.shields.io/docker/pulls/asapdotid/ansible-alpine.svg)](https://hub.docker.com/r/asapdotid/ansible-alpine/)
+![Docker Automated build](https://img.shields.io/docker/automated/asapdotid/ansible-alpine) [![Docker Pulls](https://img.shields.io/docker/pulls/asapdotid/ansible-alpine.svg)](https://hub.docker.com/r/asapdotid/ansible-alpine/)
 
 ## Additional services
 
