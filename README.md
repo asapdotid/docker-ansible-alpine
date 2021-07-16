@@ -1,6 +1,6 @@
 # Docker-Ansible base image
 
-(https://img.shields.io/github/issues/pad92/docker-ansible-alpine.svg)](https://github.com/pad92/docker-ansible-alpine) [![Docker Automated build](https://img.shields.io/docker/automated/pad92/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/pad92/ansible-alpine/) [![Docker Build Status](https://img.shields.io/docker/build/pad92/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/pad92/ansible-alpine/) [![Docker Pulls](https://img.shields.io/docker/pulls/pad92/ansible-alpine.svg)](https://hub.docker.com/r/pad92/ansible-alpine/)
+(https://img.shields.io/github/issues/asapdotid/docker-ansible-alpine.svg)](https://github.com/asapdotid/docker-ansible-alpine) [![Docker Automated build](https://img.shields.io/docker/automated/asapdotid/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/asapdotid/ansible-alpine/) [![Docker Build Status](https://img.shields.io/docker/build/asapdotid/ansible-alpine.svg?maxAge=2592000)](https://hub.docker.com/r/asapdotid/ansible-alpine/) [![Docker Pulls](https://img.shields.io/docker/pulls/asapdotid/ansible-alpine.svg)](https://hub.docker.com/r/asapdotid/ansible-alpine/)
 
 ## Additional services
 
@@ -33,7 +33,7 @@ strategy = mitogen_linear
 ```
 docker run -it --rm \
   -v ${PWD}:/ansible \
-  pad92/ansible-alpine:latest \
+  asapdotid/ansible-alpine:latest \
   ansible-playbook -i inventory playbook.yml
 ```
 
@@ -42,14 +42,14 @@ docker run -it --rm \
 ```
 docker run -it --rm \
   -v ${PWD}:/ansible \
-  pad92/ansible-alpine:latest \
+  asapdotid/ansible-alpine:latest \
   ansible-galaxy init role-name
 ```
 
 ### Lint Role
 
 ```
-docker run -it --rm pad92/ansible-alpine:latest \
+docker run -it --rm asapdotid/ansible-alpine:latest \
   -v ${PWD}:/ansible ansible-playbook tests/playbook.yml --syntax-check
 ```
 
@@ -63,3 +63,13 @@ docker run -it --rm \
   pad92/ansible-alpine:latest \
   sh
 ```
+
+### Modified entrypoint & Dockerfile
+
+- insert SSH private key use `base64` decode `-d`
+- Dockerfile add ssh config `LogLevel ERROR`
+
+### Ansible Galaxy Collection
+
+- Ansible Synchronize `ansible.posix` (https://galaxy.ansible.com/ansible/posix)
+- Ansible Docker `community.docker` (https://galaxy.ansible.com/community/docker)

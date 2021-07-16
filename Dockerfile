@@ -30,7 +30,8 @@ RUN apk --update --no-cache add \
         sshpass \
         perl-mime-base64 \
         sed \
-        bash
+        bash \
+        rsync
 
 RUN apk --update add --virtual \
         .build-deps \
@@ -58,6 +59,7 @@ RUN mkdir -p /etc/ansible \
 Host *\n\
     StrictHostKeyChecking no\n\
     UserKnownHostsFile=/dev/null\n\
+    LogLevel ERROR\n\
 """ >> /etc/ssh/ssh_config
 
 COPY entrypoint /usr/local/bin/
