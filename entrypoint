@@ -35,6 +35,12 @@ if [ -f "/root/.ssh/id_rsa" ]; then
     ssh-add /root/.ssh/id_rsa
 fi
 
+# Optional deploy known hosts
+if [ ! -z "$DEPLOY_HOST" ] && [ ! -f "/root/.ssh/known_hosts" ]; then
+    ssh-keyscan -H "${DEPLOY_HOST}" >> /root/.ssh/known_hosts
+    chmod 0644 /root/.ssh/known_hosts
+fi
+
 # install pip requirements, if any
 if [ -z "$PIP_REQUIREMENTS" ]; then
     PIP_REQUIREMENTS=requirements.txt
