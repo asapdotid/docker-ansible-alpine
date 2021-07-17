@@ -12,6 +12,7 @@
 #    - ANSIBLE_REQUIREMENTS:    ansible requirements filename;
 #                               default = "requirements.yml"
 #    - DEPLOY_KEY               deploy key (private)
+#    - DEPLOY_HOST              deploy host (known host)
 
 # Rotate ansible log if exist
 if [ -f "ansible.log" ]; then
