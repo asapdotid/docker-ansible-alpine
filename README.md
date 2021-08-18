@@ -61,7 +61,7 @@ docker run -it --rm \
   -v $(readlink -f $SSH_AUTH_SOCK):/ssh-agent \
   -v ${PWD}:/ansible \
   -e SSH_AUTH_SOCK=/ssh-agent \
-  pad92/ansible-alpine:latest \
+  asapdotid/ansible-alpine:latest \
   sh
 ```
 
