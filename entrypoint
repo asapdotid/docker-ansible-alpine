@@ -58,7 +58,7 @@ if [ -z "$ANSIBLE_REQUIREMENTS" ]; then
 fi
 
 if [ -f "$ANSIBLE_REQUIREMENTS" ]; then
-    ansible-galaxy collection install -r $ANSIBLE_REQUIREMENTS
+    ansible-galaxy install -r $ANSIBLE_REQUIREMENTS
 fi
 
 exec "$@"
